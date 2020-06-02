@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/users")
 const loginAuth = require("../jwtauth")
-
+const bcrypt = require("bcryptjs")
+const { registerValidation, loginValidation } = require("../validation")
 //user Sign up route
 router.post('/signup', async (req, res) => {
 
@@ -58,3 +59,5 @@ router.post("/logout", loginAuth, async (req, res)=>{
         res.status(500).send()
     }
 })
+
+module.exports = router
